@@ -7,15 +7,8 @@ const CONFIG_FILE: &'static str = "config.json";
 
 fn default_fallback_servers() -> Vec<(String, u16)> {
     [
-        ("funkruf.db0del.db0sda.ampr.org", 43434),
-        ("dapnet.db0fa.ampr.org", 43434),
-        ("pocsag2.db0nms.ampr.org", 43434),
-        ("dapnet.db0sda.ampr.org", 43434),
-        ("dapnet.db0vvs.ampr.org", 43434),
-        ("dapnet.di0han.ampr.org", 43434),
-        ("on3dhc.db0sda.ampr.org", 43434),
-        ("dapnet.afu.rwth-aachen.de", 43434),
-        ("db0dbn.ig-funk-siebengebirge.de", 43434)
+        ("node1.dapnet-italia.it", 43434),
+        ("node2.dapnet-italia.it", 43434)
     ]
         .iter()
         .map(|&(ref host, port)| (host.to_string(), port))
@@ -75,6 +68,19 @@ impl Default for RFM69Config {
         RFM69Config { port: String::from("/dev/ttyUSB0") }
     }
 }
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(default)]
+pub struct GP2009TRConfig {
+    pub port: String
+}
+
+impl Default for GP2009TRConfig {
+    fn default() -> GP2009TRConfig {
+        GP2009TRConfig { port: String::from("/dev/ttyS0") }
+    }
+}
+
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(default)]
@@ -138,7 +144,7 @@ pub struct MasterConfig {
 impl Default for MasterConfig {
     fn default() -> MasterConfig {
         MasterConfig {
-            server: String::from("dapnet.afu.rwth-aachen.de"),
+            server: String::from("node1.dapnet-italia.it"),
             port: 43434,
             call: String::from(""),
             auth: String::from(""),
@@ -154,7 +160,8 @@ pub enum Transmitter {
     C9000,
     Raspager,
     Raspager2,
-    RFM69
+    RFM69,
+    GP2009TR
 }
 
 impl Default for Transmitter {
@@ -172,6 +179,7 @@ impl fmt::Display for Transmitter {
             Transmitter::Raspager => "Raspager1",
             Transmitter::Raspager2 => "Raspager2",
             Transmitter::RFM69 => "RFM69",
+            Transmitter::GP2009TR => "GP2009TR",
         };
         write!(f, "{}", name)
     }
@@ -186,7 +194,8 @@ pub struct Config {
     pub raspager: RaspagerConfig,
     pub c9000: C9000Config,
     pub audio: AudioConfig,
-    pub rfm69: RFM69Config
+    pub rfm69: RFM69Config,
+    pub gp2009tr: GP2009TRConfig
 }
 
 impl Config {
