@@ -1,8 +1,8 @@
 # UniPager
 
 [![Build Status](https://img.shields.io/travis/rwth-afu/UniPager.svg?style=flat)](https://travis-ci.org/rwth-afu/UniPager)
-[![GitHub issues](https://img.shields.io/github/issues/rwth-afu/UniPager.svg?style=flat)](https://github.com/rwth-afu/UniPager/issues)
-[![GitHub release](https://img.shields.io/github/release/rwth-afu/UniPager.svg?style=flat)](https://github.com/rwth-afu/UniPager/releases)
+[![GitHub issues](https://img.shields.io/github/issues/iz0qwm/UniPager.svg?style=flat)](https://github.com/iz0qwm/UniPager/issues)
+[![GitHub release](https://img.shields.io/github/release/iz0qwm/UniPager.svg?style=flat)](https://github.com/iz0qwm/UniPager/releases)
 
 Universal POCSAG transmitter controller written in Rust.
 
