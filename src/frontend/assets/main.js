@@ -42,7 +42,7 @@ var vm = new Vue({
     },
     methods: {
         connect: function(event) {
-            this.socket = new WebSocket("ws://" + location.hostname + ":8055");
+            this.socket = new WebSocket("ws://" + location.hostname + ":8056");
             this.socket.onopen = this.onopen;
             this.socket.onmessage = this.onmessage;
             this.socket.onclose = this.onclose;

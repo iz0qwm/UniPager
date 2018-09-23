@@ -3,7 +3,7 @@ use serde_json;
 use status;
 
 pub fn run() {
-    let server = tiny_http::Server::http("0.0.0.0:8073").unwrap();
+    let server = tiny_http::Server::http("0.0.0.0:8074").unwrap();
     while let Ok(req) = server.recv() {
         if req.url() == "/status" {
             let status = serde_json::to_string(&status::get());
